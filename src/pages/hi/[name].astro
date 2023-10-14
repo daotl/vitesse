@@ -1,13 +1,13 @@
 ---
-import HiPage from "~/components/HiPage.vue";
-import Default from "~/layouts/default.astro";
+import HiPage from '~/components/HiPage.vue'
+import Default from '~/layouts/default.astro'
 
 export function getStaticPaths() {
   return [
-    {params: {name: 'zwj'}},
-    {params: {name: 'nex'}},
-    {params: {name: 'lf'}},
-  ];
+    { params: { name: 'zwj' } },
+    { params: { name: 'nex' } },
+    { params: { name: 'lf' } },
+  ]
 }
 const { name } = Astro.params;
 ---

@@ -70,6 +70,9 @@ devDependencies:
   '@daotl/tsconfig':
     specifier: ^0.1.2
     version: registry.npmmirror.com/@daotl/tsconfig@0.1.2
+  '@eslint/eslintrc':
+    specifier: ^2.1.2
+    version: 2.1.2
   '@iconify-json/carbon':
     specifier: ^1.1.21
     version: registry.npmmirror.com/@iconify-json/carbon@1.1.21
@@ -100,6 +103,9 @@ devDependencies:
   '@vue/test-utils':
     specifier: ^2.4.1
     version: registry.npmmirror.com/@vue/test-utils@2.4.1(vue@3.3.4)
+  astro-eslint-parser:
+    specifier: ^0.16.0
+    version: 0.16.0
   critters:
     specifier: ^0.0.20
     version: registry.npmmirror.com/critters@0.0.20
