@@ -1,13 +1,19 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+
 const props = defineProps<{ name: string }>()
-const router = useRouter()
-const user = useUserStore()
+
 const { t } = useI18n()
+const user = useUserStore()
 
 watchEffect(() => {
   // FIXME: False positive
   user.setNewName('a')
 })
+
+function goBack() {
+  window.history.back()
+}
 </script>
 
 <template>
@@ -28,19 +34,19 @@ watchEffect(() => {
         <span opacity-75>{{ t('intro.aka') }}:</span>
         <ul>
           <li v-for="otherName in user.otherNames" :key="otherName">
-            <RouterLink :to="`/hi/${otherName}`" replace>
+            <a :href="`/hi/${otherName}`" replace>
               {{ otherName }}
-            </RouterLink>
+            </a>
           </li>
         </ul>
-      <!-- eslint-disable-next-line prettier/prettier -->
+        <!-- eslint-disable-next-line prettier/prettier -->
       </p>
     </template>
 
     <div>
       <button
         m="3 t6" text-sm btn
-        @click="router.back()"
+        @click="goBack"
       >
         {{ t('button.back') }}
       </button>

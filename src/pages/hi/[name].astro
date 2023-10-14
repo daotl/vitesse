@@ -1,0 +1,17 @@
+---
+import HiPage from "~/components/HiPage.vue";
+import Default from "~/layouts/default.astro";
+
+export function getStaticPaths() {
+  return [
+    {params: {name: 'zwj'}},
+    {params: {name: 'nex'}},
+    {params: {name: 'lf'}},
+  ];
+}
+const { name } = Astro.params;
+---
+
+<Default>
+  <HiPage client:visible name={name!}> </HiPage>
+</Default>

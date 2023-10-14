@@ -1,4 +1,5 @@
 import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 import VueI18n from '@intlify/unplugin-vue-i18n/vite'
 // import Preview from 'vite-plugin-vue-component-preview'
@@ -21,7 +22,10 @@ import Layouts from 'vite-plugin-vue-layouts'
 import WebfontDownload from 'vite-plugin-webfont-dl'
 import generateSitemap from 'vite-ssg-sitemap'
 
-export default defineConfig({
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+export default {
   resolve: {
     alias: {
       '~/': `${path.resolve(__dirname, 'src')}/`,
@@ -32,13 +36,13 @@ export default defineConfig({
   },
 
   plugins: [
-    VueMacros({
-      plugins: {
-        vue: Vue({
-          include: [/\.vue$/, /\.md$/],
-        }),
-      },
-    }),
+    // VueMacros({
+    //   plugins: {
+    //     vue: Vue({
+    //       include: [/\.vue$/, /\.md$/],
+    //     }),
+    //   },
+    // }),
 
     // https://github.com/hannoeru/vite-plugin-pages
     Pages({
@@ -178,4 +182,8 @@ export default defineConfig({
     // TODO: workaround until they support native ESM
     noExternal: ['workbox-window', /vue-i18n/],
   },
-})
+}
+
+// export default  {
+//   plugins: [VitePWA()],
+// }
