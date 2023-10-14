@@ -5,6 +5,7 @@
     "antfu.unocss",
     "antfu.vite",
     "misterj.vue-volar-extention-pack",
+    "astro-build.astro-vscode",
     "christian-kohler.npm-intellisense",
     "csstools.postcss",
     "davidanson.vscode-markdownlint",
