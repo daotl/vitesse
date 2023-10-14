@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-
 import { availableLocales, loadLanguageAsync } from '~/modules/i18n'
 
 const { t, locale } = useI18n()
