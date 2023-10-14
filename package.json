@@ -50,6 +50,8 @@
     "@unocss/eslint-config": "^0.56.5",
     "@vitejs/plugin-vue": "^4.4.0",
     "@vue-macros/volar": "^0.16.1",
+    "@unocss/preset-web-fonts": "0.56.5",
+    "@unocss/transformer-directives": "0.56.5",
     "@vue/test-utils": "^2.4.1",
     "astro-eslint-parser": "^0.16.0",
     "critters": "^0.0.20",

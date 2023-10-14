@@ -1,0 +1,37 @@
+---
+import Link from '~/components/Link.astro'
+---
+
+<script>
+  const $modal = document.querySelector('#modal')
+  const $links = document.querySelectorAll('.close')
+
+  $links.forEach(($link) =>
+    $link.addEventListener('click', () => {
+      $modal.classList.replace('grid', 'hidden')
+      document.body.style.overflow = 'auto'
+    }),
+  )
+</script>
+
+<div
+  id="modal"
+  class="fixed top-0 z-50 hidden h-screen w-full grid-rows-[fit-content(100%)_auto] bg-black px-4 py-6 text-white"
+>
+  <div class="grid w-full grid-cols-[32px] grid-rows-[32px] justify-end text-black dark:text-white">
+    <svg id="close-modal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+      <path d="M21 1L1 21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      <path d="M1 1L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+  </div>
+  <nav class="grid content-start pt-32">
+    <ul class="grid grid-rows-[repeat(2,fit-content(100%))] content-center gap-8 text-2xl">
+      <li class="cursor-pointer select-none">
+        <Link class="close" to="#about">Acerca</Link>
+      </li>
+      <li class="cursor-pointer select-none">
+        <Link class="close" to="#contributors">Contribuidores</Link>
+      </li>
+    </ul>
+  </nav>
+</div>
