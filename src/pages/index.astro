@@ -1,8 +1,14 @@
 ---
-import Default from '~/layouts/default.astro';
-import Home from '~/components/Home.vue'
+import Layout from '~/layouts/Layout.astro'
+import HomeHero from '~/components/HomeHero.astro'
+import HomeAbout from '~/components/HomeAbout.astro'
+import HomeJoinUs from '~/components/HomeJoinUs.astro'
+import HomeContributors from '~/components/HomeContributors.astro'
 ---
-  <Default>
-    <Home client:visible />
-  </Default>
 
+<Layout>
+  <HomeHero />
+  <HomeAbout />
+  <HomeContributors />
+  <HomeJoinUs />
+</Layout>
