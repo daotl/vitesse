@@ -26,6 +26,7 @@ const loadedLanguages: string[] = []
 
 function setI18nLanguage(lang: Locale) {
   i18n.global.locale.value = lang as unknown as string
+
   if (typeof document !== 'undefined') {
     document.querySelector('html')?.setAttribute('lang', lang)
   }
@@ -45,12 +46,13 @@ export async function loadLanguageAsync(lang: string): Promise<Locale> {
 
   // If the language hasn't been loaded yet
   const messages = await localesMap[lang]?.()
+
   i18n.global.setLocaleMessage(lang, messages?.default ?? '')
   loadedLanguages.push(lang)
   return setI18nLanguage(lang)
 }
 
-export const install: UserModule = ({ app }) => {
+export const install: UserModule = app => {
   app.use(i18n)
   void loadLanguageAsync('en')
 }

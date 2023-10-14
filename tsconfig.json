@@ -20,15 +20,15 @@
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
     "types": [
-      "node",
-      "vitest",
-      "vite/client",
-      "vue/ref-macros",
-      "vite-plugin-pages/client",
-      "vite-plugin-vue-component-preview/client",
-      "vite-plugin-vue-layouts/client",
-      "vite-plugin-pwa/client",
-      "unplugin-vue-macros/macros-global"
+      "node"
+      // "vitest",
+      // "vite/client",
+      // "vue/ref-macros",
+      // "vite-plugin-pages/client",
+      // "vite-plugin-vue-component-preview/client",
+      // "vite-plugin-vue-layouts/client",
+      // "vite-plugin-pwa/client",
+      // "unplugin-vue-macros/macros-global"
     ],
     "paths": {
       "~/*": [
@@ -38,8 +38,8 @@
   },
   "vueCompilerOptions": {
     "plugins": [
-      "@vue-macros/volar/define-models",
-      "@vue-macros/volar/define-slots"
+      // "@vue-macros/volar/define-models",
+      // "@vue-macros/volar/define-slots"
     ]
   },
   "exclude": [
