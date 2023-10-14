@@ -4,9 +4,6 @@ import './styles/main.css'
 
 import type { App } from 'vue'
 
-// eslint-disable-next-line import/no-unresolved
-import 'uno.css'
-
 import { install as i18nInstall } from './modules/i18n'
 import { install as piniaInstall } from './modules/pinia'
 
