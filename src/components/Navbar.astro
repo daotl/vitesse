@@ -1,6 +1,6 @@
 ---
-import Logo from '~/components/Logo.astro'
 import Link from '~/components/Link.astro'
+import Logo from '~/components/Logo.astro'
 import NavbarModal from '~/components/NavbarModal.astro'
 ---
 
@@ -22,25 +22,43 @@ import NavbarModal from '~/components/NavbarModal.astro'
 
 <header
   id="navbar"
-  class="sticky top-0 z-20 w-full bg-white px-4 py-5 shadow-[0px_1px_2px_rgba(120,120,120,0.15)] dark:bg-black"
+  class="px-4 py-5 bg-white shadow-[0px_1px_2px_rgba(120,120,120,0.15)] sticky w-full top-0 z-20 dark:bg-black"
 >
-  <div class="mx-auto grid max-w-6xl grid-cols-[1fr_1fr] items-center">
+  <div class="mx-auto grid grid-cols-[1fr_1fr] max-w-6xl items-center">
     <div class="grid grid-cols-[40px] grid-rows-[40px] lg:grid-cols-[50px] lg:grid-rows-[50px]">
       <Logo />
     </div>
 
-    <div class="grid grid-cols-[32px] grid-rows-[32px] justify-end text-black dark:text-gray-100 lg:hidden">
+    <div class="text-black grid grid-cols-[32px] grid-rows-[32px] justify-end lg:hidden dark:text-gray-100">
       <svg id="open-modal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 24">
-        <path d="M2 2H23.25" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-        ></path>
-        <path d="M2 12H23.25" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-        ></path>
-        <path d="M2 22H23.25" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-        ></path>
+        <path
+          d="M2 2H23.25"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+        </path>
+        <path
+          d="M2 12H23.25"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+        </path>
+        <path
+          d="M2 22H23.25"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+        </path>
       </svg>
     </div>
 
-    <nav class="hidden grid-cols-[fit-content(100%)] items-center justify-end gap-8 text-gray-100 lg:grid">
+    <nav class="hidden text-gray-100 grid-cols-[fit-content(100%)] gap-8 justify-end items-center lg:grid">
       <ul class="grid grid-cols-[repeat(2,fit-content(100%))] gap-8">
         <li class="cursor-pointer select-none">
           <Link to="#about">Acerca</Link>

@@ -2,12 +2,12 @@ import {
   defineConfig,
   presetAttributify,
   presetIcons,
+  presetMini,
   presetTypography,
   presetUno,
   presetWebFonts,
   transformerDirectives,
   transformerVariantGroup,
-  presetMini,
 } from 'unocss'
 
 export default defineConfig({

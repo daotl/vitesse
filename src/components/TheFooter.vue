@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+
 import { availableLocales, loadLanguageAsync } from '~/modules/i18n'
 
 const { t, locale } = useI18n()
@@ -14,7 +15,7 @@ async function toggleLocales() {
 </script>
 
 <template>
-  <nav flex="~ gap-4" mt-6 justify-center text-xl>
+  <nav flex="~ gap-4" mt-6 text-xl justify-center>
     <a icon-btn to="/" :title="t('button.home')">
       <div i-carbon-campsite />
     </a>

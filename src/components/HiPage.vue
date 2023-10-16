@@ -25,7 +25,7 @@ function goBack() {
       {{ t('intro.hi', { name: props.name }) }}
     </p>
 
-    <p text-sm opacity-75>
+    <p opacity-75 text-sm>
       <em>{{ t('intro.dynamic-route') }}</em>
     </p>
 

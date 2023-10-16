@@ -26,7 +26,7 @@ function go() {
       </a>
     </p>
     <p>
-      <em text-sm opacity-75>{{ t('intro.desc') }}</em>
+      <em opacity-75 text-sm>{{ t('intro.desc') }}</em>
     </p>
 
     <div py-4 />
