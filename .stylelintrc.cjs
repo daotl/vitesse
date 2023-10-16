@@ -1,5 +1,6 @@
 const commonExtends = [
   'stylelint-config-html/html',
+  'stylelint-config-html/astro',
   'stylelint-config-html/vue',
   'stylelint-config-property-sort-order-smacss',
 ]
