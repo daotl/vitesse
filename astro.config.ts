@@ -9,6 +9,7 @@ export default defineConfig({
   integrations: [
     vue({
       appEntrypoint: '/src/vue',
+      jsx: true,
     }),
     UnoCSS({ injectReset: true }),
   ],
