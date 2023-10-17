@@ -16,7 +16,7 @@ const compat = new FlatCompat({
 
 export default [
   {
-    ignores: ['cypress'],
+    ignores: ['.astro', 'src/env.d.ts', 'cypress'],
   },
   ...config(),
 
@@ -35,7 +35,7 @@ export default [
     },
     rules: {
       // Ignore `Props` for `*.astro`
-      'unused-imports/no-unused-vars': ['error', { vars: 'all', varsIgnorePattern: '^_|^Props$', args: 'after-used', argsIgnorePattern: '^_' }],
+      'unused-imports/no-unused-vars': ['error', { vars: 'all', varsIgnorePattern: '^_|^Props$|^Params$', args: 'after-used', argsIgnorePattern: '^_' }],
       // ...pluginAstro.configs.recommended.rules,
       // `style/jsx-*` that conflict with Astro template
       'style/jsx-indent': 'off',
