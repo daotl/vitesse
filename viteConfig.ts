@@ -5,7 +5,6 @@ import VueI18n from '@intlify/unplugin-vue-i18n/vite'
 // import Preview from 'vite-plugin-vue-component-preview'
 import LinkAttributes from 'markdown-it-link-attributes'
 import Shiki from 'markdown-it-shikiji'
-import Unocss from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 // Cannot find module:
@@ -71,10 +70,6 @@ export default {
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
       dts: 'src/types/components.d.ts',
     }),
-
-    // https://github.com/antfu/unocss
-    // see uno.config.ts for config
-    Unocss(),
 
     // https://github.com/unplugin/unplugin-vue-markdown
     // Don't need this? Try vitesse-lite: https://github.com/antfu/vitesse-lite
