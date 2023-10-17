@@ -5,9 +5,9 @@ import NavbarModal from '~/components/NavbarModal.astro'
 ---
 
 <script>
-  const $modal = document.querySelector('#modal')
-  const $openModal = document.querySelector('#open-modal')
-  const $closeModal = document.querySelector('#close-modal')
+  const $modal = document.querySelector('#modal')!
+  const $openModal = document.querySelector('#open-modal')!
+  const $closeModal = document.querySelector('#close-modal')!
 
   $openModal.addEventListener('click', () => {
     $modal.classList.replace('hidden', 'grid')

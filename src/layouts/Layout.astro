@@ -2,11 +2,17 @@
 import Footer from '~/components/Footer.astro'
 import Navbar from '~/components/Navbar.astro'
 
+interface Props {
+  withoutNavbar?: boolean
+  withoutFooter?: boolean
+  title?: string
+  description?: string
+}
 const {
   withoutNavbar = false,
   withoutFooter = false,
-  title = 'Fazt Community',
-  description = 'Crece como profesional compartiendo tus conocimientos con los demás y participando en proyectos open source',
+  title = 'Astro Starter Template',
+  description = 'https://github.com/daotl/astro-starter',
 } = Astro.props
 ---
 
