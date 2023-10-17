@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro check && astro build",
     "preview": "astro preview",
     "lint": "npm run eslint && npm run stylelint",
     "lint:fix": "npm run eslint:fix && npm run stylelint:fix",
@@ -37,6 +37,7 @@
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.2.1",
     "@daotl/eslint-config": "^2.0.0-beta.0",
     "@daotl/tsconfig": "^0.1.2",
     "@eslint/eslintrc": "^2.1.2",
