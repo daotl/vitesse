@@ -1,9 +1,10 @@
 ---
-title: I Have a Dream
+title: I Have a Dream - first
 pubDate: 2022-07-01
 author: Martin Luther King
 image:
   url: https://media.npr.org/assets/img/2017/01/15/king-speech_custom-55a36ccca2c18277f6560b860375bd766a40c22d-s1200-c85.webp
+tags: ["speech", "expression", "indoctrination","skill"]
 ---
 
 I have a dream that one day on the red hills of Georgia, the sons of former slaves and the sons of former slave owners will be able to sit down together at the table of brotherhood.

@@ -59,7 +59,10 @@ import NavbarModal from '~/components/NavbarModal.astro'
     </div>
 
     <nav class="hidden text-gray-100 grid-cols-[fit-content(100%)] gap-8 justify-end items-center lg:grid">
-      <ul class="grid grid-cols-[repeat(2,fit-content(100%))] gap-8">
+      <ul class="grid grid-cols-[repeat(3,fit-content(100%))] gap-8">
+        <li class="cursor-pointer select-none">
+          <a href="/tags/" class="color-blue">Tags</a>
+        </li>
         <li class="cursor-pointer select-none">
           <Link to="#about">Acerca</Link>
         </li>
