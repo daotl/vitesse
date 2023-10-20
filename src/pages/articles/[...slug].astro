@@ -1,5 +1,5 @@
 ---
-import type { GetStaticPaths, InferGetStaticParamsType, InferGetStaticPropsType } from 'astro'
+import type { GetStaticPaths, InferGetStaticPropsType } from 'astro'
 import { getCollection } from 'astro:content'
 
 import MarkdownPostLayout from '../../layouts/MarkdownPostLayout.astro'
@@ -12,7 +12,7 @@ export const getStaticPaths = (async function () {
   }))
 }) satisfies GetStaticPaths
 
-type Params = InferGetStaticParamsType<typeof getStaticPaths>
+// type Params = InferGetStaticParamsType<typeof getStaticPaths>
 type Props = InferGetStaticPropsType<typeof getStaticPaths>
 
 const { entry } = Astro.props
