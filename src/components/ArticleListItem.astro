@@ -1,0 +1,58 @@
+---
+const { frontmatter, url } = Astro.props
+const altInfo = 'Picture display failure';
+---
+
+<div class="pt-32px mb-32px">
+  <div>
+    {
+      frontmatter.image.url && (
+        <div>
+          <img
+            src={frontmatter.image.url}
+            alt={altInfo}
+            class="h-[25em] w-[100%]"
+          />
+        </div>
+      )
+    }
+  </div>
+
+  <div class="p-[32px] bg-[#2a2e37]">
+    <h2 class="text-[32px] font-black leading-10 color-[#ebeff0]">
+      <a class="text-inherit hover:underline" href={url}>{frontmatter.title}</a>
+    </h2>
+    <p class="mt-8px text-[14px] font-medium leading-[22px] color-[#9095a2]">
+      {frontmatter.desc}
+    </p>
+
+    <div>
+      <div class="pt-32px mt-24px flex justify-left">
+        <div class="mr-[8px]">
+          <img
+            src={frontmatter.authorPhoto}
+            alt=""
+            class="rounded-[50%] h-[2em] w-[2em]"
+          />
+        </div>
+        <div>
+          <p class="text-[12px] font-600 color-[#9095a2]">
+            {frontmatter.author}
+          </p>
+          <p class="text-[12px] leading-[18px] color-[#9095a2]">
+            {frontmatter.pubDate}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  body {
+    background-color: #22242b;
+    h2 {
+      font-family: "Monument", sans-serif;
+    }
+  }
+</style>

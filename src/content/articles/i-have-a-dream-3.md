@@ -3,8 +3,10 @@ title: I Have a Dream - Third
 pubDate: 2022-09-09
 author: Martin Luther King
 image:
-  url: https://media.npr.org/assets/img/2017/01/15/king-speech_custom-55a36ccca2c18277f6560b860375bd766a40c22d-s1200-c85.webp
-tags: ["computer","programming","internet","skill"]
+  url: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaaxevEOWkTpgrosOqGeFUdrUUyCzgxXNJaw&usqp=CAU
+desc: We updated our Plural Console with an in-app option to access our Plural AI command and now offer a feature to backup and restore databases.
+authorPhoto: https://www.plural.sh/blog/content/images/size/w320/2022/10/profile_pic_1.jpeg
+tags: ["computer","programming","internet","skill","ability"]
 ---
 
 This is our hope. This is the faith that I go back to the South with. With this faith, we will be able to hew out of the mountain of despair a stone of hope. With this faith we will be able to transform the jangling discords of our nation into a beautiful symphony of brotherhood. With this faith we will be able to work together, to pray together, to struggle together, to go to jail together, to stand up for freedom together, knowing that we will be free one day.

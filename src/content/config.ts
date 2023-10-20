@@ -11,6 +11,8 @@ const articlesCollection = defineCollection({
       url: z.string(),
       alt: z.string().optional(),
     }).optional(),
+    desc: z.string(),
+    authorPhoto: z.string(),
     tags: z.array(z.string()).optional(),
   }),
 })

@@ -1,8 +1,12 @@
 ---
-import type { GetStaticPaths, InferGetStaticParamsType, InferGetStaticPropsType } from 'astro'
+import type {
+  GetStaticPaths,
+  InferGetStaticParamsType,
+  InferGetStaticPropsType,
+} from 'astro'
 import { getCollection } from 'astro:content'
 
-import BlogArticle from '../../components/BlogArticle.astro'
+import ArticleListItem from '../../components/ArticleListItem.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro'
 
 export const getStaticPaths = (async function () {
@@ -12,32 +16,15 @@ export const getStaticPaths = (async function () {
   ]
 
   return uniqueTags.map((tag: any) => {
-    const filteredArticles = allArticles.filter((article) => article.data.tags?.includes(tag))
+    const filteredArticles = allArticles.filter((article) =>
+      article.data.tags?.includes(tag),
+    )
     return {
       params: { tag },
       props: { articles: filteredArticles },
     }
   })
 }) satisfies GetStaticPaths
-// export async function getStaticPaths() {
-//   const allArticles = await getCollection('articles')
-//   const uniqueTags = [
-//     ...new Set(allArticles.map((article) => article.data.tags ?? []).flat()),
-//   ]
-
-//   return uniqueTags.map((tag) => {
-//     const filteredArticles = allArticles.filter((article) => {
-//       if(article.data.tags) {
-//         return article.data.tags.includes(tag)
-//       }
-//     }
-//     )
-//     return {
-//       params: { tag },
-//       props: { articles: filteredArticles },
-//     }
-//   })
-// }
 
 type Params = InferGetStaticParamsType<typeof getStaticPaths>
 type Props = InferGetStaticPropsType<typeof getStaticPaths>
@@ -47,30 +34,22 @@ const { articles } = Astro.props as Props;
 ---
 
 <BaseLayout pageTitle={tag}>
-  <div class="content">
-    <p class="title">Articles tagged with {tag}</p>
+  <div>
+    <h1 class="pt-[1em] text-32px text-center color-red">
+      Articles tagged with {tag}
+    </h1>
     <br />
-    <ul>
-      {
-        articles.map((article: { slug: any; data: { title: any } }) => (
-          <BlogArticle
-            url={`/articles/${article.slug}`}
-            title={article.data.title}
-          />
-        ))
-      }
-    </ul>
+    <div class="flex justify-center">
+      <ul class="w-50%">
+        {
+          articles.map((article) => (
+            <ArticleListItem
+              frontmatter={article.data}
+              url={`/articles/${article.slug}`}
+            />
+          ))
+        }
+      </ul>
+    </div>
   </div>
 </BaseLayout>
-
-<style>
-  .content {
-    margin-bottom: 33em;
-    padding: 3em 0 0 3em;
-    box-sizing: border-box;
-  }
-  .title {
-    color: red;
-    font-size: 20px;
-  }
-</style>
