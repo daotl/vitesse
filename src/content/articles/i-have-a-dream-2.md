@@ -3,8 +3,10 @@ title: I Have a Dream - Second
 pubDate: 2021-08-01
 author: Martin Luther King
 image:
-  url: https://media.npr.org/assets/img/2017/01/15/king-speech_custom-55a36ccca2c18277f6560b860375bd766a40c22d-s1200-c85.webp
-tags: ["skill","entrepreneur","start a business"]
+  url: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTfdw_G0ROJdry1qYddNb9OmFIbZFYa89nYQ&usqp=CAU
+desc: A comprehensive evaluation of Continuous Deployment tools available for developers, Including ArgoCD, Harness, Flux & Plural CD.
+authorPhoto: https://www.plural.sh/blog/content/images/size/w320/2022/05/me2.jpg
+tags: ["skill","entrepreneur","start a business","Challenges","ability"]
 ---
 
 I have a dream that one day on the red hills of Georgia, the sons of former slaves and the sons of former slave owners will be able to sit down together at the table of brotherhood.
