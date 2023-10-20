@@ -1,28 +1,49 @@
 ---
+import type { GetStaticPaths, InferGetStaticParamsType, InferGetStaticPropsType } from 'astro'
 import { getCollection } from 'astro:content'
 
 import BlogArticle from '../../components/BlogArticle.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro'
 
-export async function getStaticPaths() {
+export const getStaticPaths = (async function () {
   const allArticles = await getCollection('articles')
   const uniqueTags = [
-    ...new Set(allArticles.map((article) => article.data.tags).flat()),
+    ...new Set(allArticles.map((article) => article.data.tags ?? []).flat()),
   ]
 
-  return uniqueTags.map((tag) => {
-    const filteredArticles = allArticles.filter((article) =>
-      article.data.tags.includes(tag),
-    )
+  return uniqueTags.map((tag: any) => {
+    const filteredArticles = allArticles.filter((article) => article.data.tags?.includes(tag))
     return {
       params: { tag },
       props: { articles: filteredArticles },
     }
   })
-}
+}) satisfies GetStaticPaths
+// export async function getStaticPaths() {
+//   const allArticles = await getCollection('articles')
+//   const uniqueTags = [
+//     ...new Set(allArticles.map((article) => article.data.tags ?? []).flat()),
+//   ]
 
-const { tag } = Astro.params
-const { articles } = Astro.props;
+//   return uniqueTags.map((tag) => {
+//     const filteredArticles = allArticles.filter((article) => {
+//       if(article.data.tags) {
+//         return article.data.tags.includes(tag)
+//       }
+//     }
+//     )
+//     return {
+//       params: { tag },
+//       props: { articles: filteredArticles },
+//     }
+//   })
+// }
+
+type Params = InferGetStaticParamsType<typeof getStaticPaths>
+type Props = InferGetStaticPropsType<typeof getStaticPaths>
+
+const { tag } = Astro.params as Params
+const { articles } = Astro.props as Props;
 ---
 
 <BaseLayout pageTitle={tag}>
@@ -31,7 +52,7 @@ const { articles } = Astro.props;
     <br />
     <ul>
       {
-        articles.map((article) => (
+        articles.map((article: { slug: any; data: { title: any } }) => (
           <BlogArticle
             url={`/articles/${article.slug}`}
             title={article.data.title}
