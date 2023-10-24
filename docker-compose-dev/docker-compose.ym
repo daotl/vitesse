@@ -1,0 +1,39 @@
+# https://docs.directus.io/self-hosted/quickstart.html#_1-installation
+
+version: "3"
+name: directus
+
+services:
+  directus:
+    container_name: directus
+    image: directus/directus:${DIRECTUS_TAG}
+    restart: unless-stopped
+    depends_on:
+      - redis
+    volumes:
+      - directus_uploads:/directus/uploads
+      # - ./extensions:/directus/extensions
+    ports:
+      - 8055:8055
+    environment:
+      KEY: '255d861b-5ea1-5996-9aa3-922530ec40b1'
+      SECRET: '6116487b-cda1-52c2-b5b5-c8022c45e263'
+
+      DB_CLIENT: 'sqlite3'
+      DB_FILENAME: './database/data.db'
+
+      CACHE_ENABLED: 'true'
+      CACHE_STORE: 'redis'
+      CACHE_REDIS: 'redis://redis:6379'
+
+      ADMIN_EMAIL: 'directus@daot.io'
+      ADMIN_PASSWORD: password
+
+      PUBLIC_URL: 'http://localhost:8055'
+
+  redis:
+    image: redis:${REDIS_TAG}
+
+networks:
+  web:
+    external: true
