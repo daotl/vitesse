@@ -1,17 +1,22 @@
-import { authentication, createDirectus, type DirectusClient, rest } from '@directus/sdk'
+import { createDirectus, type DirectusClient, rest, type RestClient } from '@directus/sdk'
+import { ofetch } from 'ofetch'
 
-interface Article {
-  id: number
-  title: string
-  content: string
-}
+import type { Article } from '../pages/articles/types'
 
 interface Schema {
-  articles: Article[]
+  article: Article[]
 }
 
-export function getDirectusClient(): DirectusClient<Schema> {
-  const client = createDirectus('https://directus.internetapi.c').with(rest()).with(authentication())
+type Client = DirectusClient<Schema> & RestClient<Schema>
+
+let client: Client
+
+export function getDirectusClient(): Client {
+  if (!client) {
+    client = createDirectus('http://loclhost:8055', {
+      globals: { fetch: ofetch },
+    }).with(rest())
+  }
 
   return client
 }

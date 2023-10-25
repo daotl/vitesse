@@ -1,11 +1,15 @@
 ---
-import { getCollection } from 'astro:content'
+import { readItems } from '@directus/sdk'
 
 import ArticleListItem from '../../components/ArticleListItem.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro'
+import { getDirectusClient } from '../../utils/get-directus-client'
 
-const allArticles = await getCollection('articles')
-const pageTitle = 'Article List';
+const pageTitle = 'Article List'
+
+const client = getDirectusClient()
+
+const allArticles = await client.request(readItems('article'));
 ---
 
 <BaseLayout pageTitle={pageTitle}>
@@ -16,7 +20,7 @@ const pageTitle = 'Article List';
       {
         allArticles.map(article => (
           <ArticleListItem
-            frontmatter={article.data}
+            data={article}
             url={`/articles/${article.slug}`}
           />
         ))

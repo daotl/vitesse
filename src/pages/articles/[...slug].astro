@@ -1,25 +1,25 @@
 ---
-import type { GetStaticPaths, /* InferGetStaticParamsType */ InferGetStaticPropsType } from 'astro'
-import { getCollection } from 'astro:content'
+import { readItems } from '@directus/sdk'
+import type { GetStaticPaths, InferGetStaticPropsType } from 'astro'
 
 import MarkdownPostLayout from '../../layouts/MarkdownPostLayout.astro'
+import { getDirectusClient } from '../../utils/get-directus-client'
 
 export const getStaticPaths = (async function () {
-  const entries = await getCollection('articles')
+  const client = getDirectusClient()
 
-  return entries.map(entry => ({
-    params: { slug: entry.slug },
-    props: { entry },
+  const allArticles = await client.request(readItems('article'))
+  return allArticles.map((item) => ({
+    params: { slug: item.slug },
+    props: item,
   }))
-}) satisfies GetStaticPaths
+} satisfies GetStaticPaths)
 
-// type Params = InferGetStaticParamsType<typeof getStaticPaths>
 type Props = InferGetStaticPropsType<typeof getStaticPaths>
 
-const { entry } = Astro.props
-const { Content } = await entry.render()
+const props = Astro.props;
 ---
 
-<MarkdownPostLayout frontmatter={entry.data}>
-  <Content />
+<MarkdownPostLayout data={props}>
+  <div>333</div>
 </MarkdownPostLayout>

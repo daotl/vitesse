@@ -1,15 +1,17 @@
 ---
-const { frontmatter, url } = Astro.props
+import type { Article } from '../pages/articles/types'
+
+const { data, url } = Astro.props as { data: Article; url: string }
 const altInfo = 'Picture display failure';
 ---
 
 <div class="pt-32px mb-32px">
   <div>
     {
-      frontmatter.image.url && (
+      data.imageUrl && (
         <div>
           <img
-            src={frontmatter.image.url}
+            src={data.imageUrl}
             alt={altInfo}
             class="h-[25em] w-[100%]"
           />
@@ -20,27 +22,27 @@ const altInfo = 'Picture display failure';
 
   <div class="p-[32px] bg-[#2a2e37]">
     <h2 class="text-[32px] font-black leading-10 color-[#ebeff0]">
-      <a class="text-inherit hover:underline" href={url}>{frontmatter.title}</a>
+      <a class="text-inherit hover:underline" href={url}>{data.title}</a>
     </h2>
     <p class="mt-8px text-[14px] font-medium leading-[22px] color-[#9095a2]">
-      {frontmatter.desc}
+      {data.description}
     </p>
 
     <div>
       <div class="pt-32px mt-24px flex justify-left">
         <div class="mr-[8px]">
           <img
-            src={frontmatter.authorPhoto}
+            src={data.authorPhotoUrl}
             alt=""
             class="rounded-[50%] h-[2em] w-[2em]"
           />
         </div>
         <div>
           <p class="text-[12px] font-600 color-[#9095a2]">
-            {frontmatter.author}
+            {data.author}
           </p>
           <p class="text-[12px] leading-[18px] color-[#9095a2]">
-            {frontmatter.pubDate}
+            {data.date_created}
           </p>
         </div>
       </div>
