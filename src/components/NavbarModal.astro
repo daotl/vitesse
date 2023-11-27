@@ -6,7 +6,7 @@ import Link from '~/components/Link.astro'
   const $modal = document.querySelector('#modal')!
   const $links = document.querySelectorAll('.close')
 
-  $links.forEach(($link) =>
+  $links.forEach($link =>
     $link.addEventListener('click', () => {
       $modal.classList.replace('grid', 'hidden')
       document.body.style.overflow = 'auto'

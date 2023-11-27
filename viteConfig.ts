@@ -3,9 +3,11 @@ import { fileURLToPath } from 'node:url'
 
 import VueI18n from '@intlify/unplugin-vue-i18n/vite'
 // import Preview from 'vite-plugin-vue-component-preview'
+// Cannot find module:
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
-// Cannot find module:
+import { VueRouterAutoImports } from 'unplugin-vue-router'
+import VueRouter from 'unplugin-vue-router/vite'
 import Inspect from 'vite-plugin-inspect'
 import { VitePWA } from 'vite-plugin-pwa'
 import VueDevTools from 'vite-plugin-vue-devtools'
@@ -36,6 +38,13 @@ export default {
     //   },
     // }),
 
+    // // https://github.com/posva/unplugin-vue-router
+    VueRouter({
+      extensions: ['.vue'],
+      exclude: ['**/components/*'],
+      dts: 'src/types/typed-router.d.ts',
+    }),
+
     // https://github.com/JohnCampionJr/vite-plugin-vue-layouts
     Layouts(),
 
@@ -43,10 +52,15 @@ export default {
     AutoImport({
       imports: [
         'vue',
-        'vue-router',
+        // 'vue-router',
         'vue-i18n',
         '@vueuse/head',
         '@vueuse/core',
+        VueRouterAutoImports,
+        {
+          // add any other imports you were relying on
+          'vue-router/auto': ['useLink'],
+        },
       ],
       dts: 'src/types/auto-imports.d.ts',
       dirs: ['src/composables', 'src/stores'],
@@ -61,6 +75,10 @@ export default {
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
       dts: 'src/types/components.d.ts',
     }),
+
+    // https://github.com/unocss/unocss
+    // see uno.config.ts for config
+    // Unocss(),
 
     // https://github.com/antfu/vite-plugin-pwa
     VitePWA({
@@ -121,9 +139,6 @@ export default {
   test: {
     include: ['test/**/*.test.ts'],
     environment: 'jsdom',
-    deps: {
-      inline: ['@vue', '@vueuse', 'vue-demi'],
-    },
   },
 
   // https://github.com/antfu/vite-ssg
