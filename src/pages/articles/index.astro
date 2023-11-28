@@ -14,7 +14,7 @@ const pageTitle = 'Article List';
   <div class="flex justify-center">
     <ul class="w-50%">
       {
-        allArticles.map((article) => (
+        allArticles.map(article => (
           <ArticleListItem
             frontmatter={article.data}
             url={`/articles/${article.slug}`}
