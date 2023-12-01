@@ -4,13 +4,13 @@ import { fileURLToPath } from 'node:url'
 import VueI18n from '@intlify/unplugin-vue-i18n/vite'
 // import Preview from 'vite-plugin-vue-component-preview'
 import AutoImport from 'unplugin-auto-import/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
 // Cannot find module:
 import Inspect from 'vite-plugin-inspect'
 import { VitePWA } from 'vite-plugin-pwa'
 import VueDevTools from 'vite-plugin-vue-devtools'
 import Inspector from 'vite-plugin-vue-inspector'
-import Layouts from 'vite-plugin-vue-layouts'
 import WebfontDownload from 'vite-plugin-webfont-dl'
 import generateSitemap from 'vite-ssg-sitemap'
 
@@ -28,22 +28,11 @@ export default {
   },
 
   plugins: [
-    // VueMacros({
-    //   plugins: {
-    //     vue: Vue({
-    //       include: [/\.vue$/, /\.md$/],
-    //     }),
-    //   },
-    // }),
-
-    // https://github.com/JohnCampionJr/vite-plugin-vue-layouts
-    Layouts(),
 
     // https://github.com/antfu/unplugin-auto-import
     AutoImport({
       imports: [
         'vue',
-        'vue-router',
         'vue-i18n',
         '@vueuse/head',
         '@vueuse/core',
@@ -51,6 +40,7 @@ export default {
       dts: 'src/types/auto-imports.d.ts',
       dirs: ['src/composables', 'src/stores'],
       vueTemplate: true,
+      resolvers: [ElementPlusResolver()],
     }),
 
     // https://github.com/antfu/unplugin-vue-components
@@ -60,6 +50,7 @@ export default {
       // allow auto import and register components used in markdown
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
       dts: 'src/types/components.d.ts',
+      resolvers: [ElementPlusResolver()],
     }),
 
     // https://github.com/antfu/vite-plugin-pwa
@@ -138,12 +129,5 @@ export default {
     },
   },
 
-  ssr: {
-    // TODO: workaround until they support native ESM
-    noExternal: ['workbox-window', /vue-i18n/],
-  },
+  ssr: { noExternal: ['element-plus', 'workbox-window', /vue-i18n/] },
 }
-
-// export default  {
-//   plugins: [VitePWA()],
-// }
