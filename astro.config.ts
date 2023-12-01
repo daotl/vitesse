@@ -6,6 +6,7 @@ import vite from './viteConfig'
 
 // https://astro.build/config
 export default defineConfig({
+  prefetch: true,
   integrations: [
     vue({
       appEntrypoint: '/src/vue',

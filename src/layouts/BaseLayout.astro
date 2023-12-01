@@ -1,4 +1,6 @@
 ---
+import { ViewTransitions } from 'astro:transitions'
+
 import Footer from '~/components/Footer.astro'
 import Navbar from '~/components/Navbar.astro'
 
@@ -30,6 +32,7 @@ const {
     <link rel="icon" type="image/png" sizes="64x64" href="favicon.png" />
 
     <meta name="generator" content={Astro.generator} />
+    <ViewTransitions />
   </head>
 
   <body class="min-h-screen dark:bg-gray-400 dark:text-white">

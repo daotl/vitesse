@@ -1,0 +1,59 @@
+---
+import { getCollection } from 'astro:content'
+import { fade, ViewTransitions } from 'astro:transitions'
+
+import BaseLayout from '../../layouts/BaseLayout.astro'
+
+const allArticles = await getCollection('articles')
+const tags = [
+  ...new Set(allArticles.map(article => article.data.tags).flat()),
+]
+const pageTitle = 'Tag Index';
+---
+
+<html lang="es" class="[scroll-behavior:smooth]">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <ViewTransitions />
+  </head>
+
+  <body class="min-h-screen dark:bg-gray-400 dark:text-white">
+    <BaseLayout pageTitle={pageTitle}>
+      <div class="tags" transition:animate={fade({ duration: '1.4s' })}>
+        {
+          tags.map(tag => (
+            <p class="tag">
+              <a href={`/tags/${tag}`} data-astro-prefetch>
+                {tag}
+              </a>
+            </p>
+          ))
+        }
+      </div>
+    </BaseLayout>
+    <style>
+      a {
+        color: #00539f;
+      }
+
+      .tags {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        margin: 2em 0 22em 0;
+        padding: 0 2em 0 2em;
+      }
+
+      .tag {
+        margin: 0.25em;
+        border: dotted 1px #a1a1a1;
+        border-radius: 0.5em;
+        padding: 0.5em 1em;
+        font-size: 1.15em;
+        background-color: #f8fcfd;
+        text-align: center;
+      }
+    </style>
+  </body>
+</html>

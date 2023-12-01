@@ -1,12 +1,13 @@
 ---
-import type { GetStaticPaths, InferGetStaticPropsType } from 'astro'
+import type { GetStaticPaths, /* InferGetStaticParamsType */ InferGetStaticPropsType } from 'astro'
 import { getCollection } from 'astro:content'
 
 import MarkdownPostLayout from '../../layouts/MarkdownPostLayout.astro'
 
 export const getStaticPaths = (async function () {
   const entries = await getCollection('articles')
-  return entries.map((entry) => ({
+
+  return entries.map(entry => ({
     params: { slug: entry.slug },
     props: { entry },
   }))

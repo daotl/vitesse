@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content'
+
+import ArticleListItem from '../../components/ArticleListItem.astro'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+
+const allArticles = await getCollection('articles')
+const pageTitle = 'Article List';
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <h1 class="pt-[1em] text-32px text-center color-red">Article list</h1>
+  <br />
+  <div class="flex justify-center">
+    <ul class="w-50%">
+      {
+        allArticles.map(article => (
+          <ArticleListItem
+            frontmatter={article.data}
+            url={`/articles/${article.slug}`}
+          />
+        ))
+      }
+    </ul>
+  </div>
+</BaseLayout>

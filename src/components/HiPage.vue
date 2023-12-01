@@ -3,12 +3,15 @@ import { useI18n } from 'vue-i18n'
 
 const props = defineProps<{ name: string }>()
 
+// const router = useRouter()
+// const route = useRoute('/hi/[name]')
+// console.log(route)
+
 const { t } = useI18n()
 const user = useUserStore()
 
 watchEffect(() => {
-  // FIXME: False positive
-  user.setNewName('a')
+  user.setNewName(props.name)
 })
 
 function goBack() {
@@ -22,7 +25,7 @@ function goBack() {
       <div i-carbon-pedestrian inline-block />
     </div>
     <p>
-      {{ t('intro.hi', { name: props.name }) }}
+      {{ t('intro.hi', { name: user.savedName }) }}
     </p>
 
     <p opacity-75 text-sm>
