@@ -16,20 +16,6 @@
   },
   "targetDefaults": {
     "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "cache": true,
-      "executor": "@nx/vite:build",
-      "inputs": [
-        "default"
-      ],
-      "outputs": [
-        "{options.outputPath}"
-      ],
-      "options": {
-        "outputPath": "{projectRoot}/dist"
-      },
       "configurations": {
         "ci": {
           "options": {
@@ -47,39 +33,21 @@
       }
     },
     "serve": {
-      "executor": "@nx/vite:dev-server",
       "options": {
-        "buildTarget": "vitesse:build",
         "port": 3333
-      },
-      "hmr": true,
-      "configurations": {
-        "production": {
-          "buildTarget": "vitesse:build:production",
-          "hmr": false
-        }
       }
     },
     "preview": {
-      "executor": "@nx/vite:preview-server",
       "options": {
-        "buildTarget": "vitesse:build",
         "port": 3333
-      },
-      "configurations": {
-        "production": {
-          "buildTarget": "vitesse:build:production"
-        }
       }
     },
     "test": {
       "dependsOn": [
         "build"
       ],
-      "cache": true,
-      "executor": "@nx/vite:test",
       "outputs": [
-        "{options.reportsDirectory}"
+        "{options.coverage.reportsDirectory}"
       ],
       "options": {
         "passWithNoTests": true
@@ -99,12 +67,10 @@
     "lint": {
       "dependsOn": [
         {
-          "project": "self",
           "target": "eslint",
           "params": "forward"
         },
         {
-          "project": "self",
           "target": "stylelint",
           "params": "forward"
         }
@@ -138,16 +104,11 @@
       }
     },
     "container": {
-      "dependsOn": [
-        "build"
-      ],
+      "dependsOn": ["build"],
       "cache": true,
       "options": {
         "load": true,
-        "platforms": [
-          "linux/amd64",
-          "linux/arm64"
-        ]
+        "platforms": ["linux/amd64", "linux/arm64"]
       },
       "configurations": {
         "ci": {
@@ -157,12 +118,20 @@
       }
     },
     "deploy": {
-      "dependsOn": [
-        "build",
-        "test",
-        "lint"
-      ],
+      "dependsOn": ["build", "test", "lint"],
       "cache": false
     }
-  }
+  },
+  "plugins": [
+    {
+      "plugin": "@nx/vite/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "testTargetName": "test",
+        "serveTargetName": "serve",
+        "previewTargetName": "preview",
+        "serveStaticTargetName": "serve-static"
+      }
+    }
+  ]
 }
