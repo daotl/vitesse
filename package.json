@@ -27,6 +27,7 @@
     "@daotl/tsconfig": "^0.1.2",
     "@iconify-json/carbon": "^1.1.37",
     "@intlify/unplugin-vue-i18n": "^4.0.0",
+    "@nx/eslint": "^19.5.7",
     "@nx/vite": "19.5.7",
     "@nx/web": "19.5.7",
     "@shikijs/markdown-it": "^1.13.0",

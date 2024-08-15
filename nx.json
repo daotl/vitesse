@@ -82,13 +82,6 @@
         "command": "echo lint done, args:"
       }
     },
-    "eslint": {
-      "cache": true,
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "FIX={args.fix}; eslint . --fix=${FIX:-false}"
-      }
-    },
     "stylelint": {
       "cache": true,
       "executor": "nx:run-commands",
@@ -131,6 +124,12 @@
         "serveTargetName": "serve",
         "previewTargetName": "preview",
         "serveStaticTargetName": "serve-static"
+      }
+    },
+    {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "eslint"
       }
     }
   ]
