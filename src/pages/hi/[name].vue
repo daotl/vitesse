@@ -22,7 +22,7 @@ watchEffect(() => {
       <em>{{ t('intro.dynamic-route') }}</em>
     </p>
 
-    <template v-if="user.otherNames.length">
+    <template v-if="user.otherNames.length > 0">
       <div mt-4 text-sm>
         <span opacity-75>{{ t('intro.aka') }}:</span>
         <ul>

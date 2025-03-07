@@ -12,4 +12,8 @@ export default config({
       extraFileExtensions: ['.vue'],
     },
   },
+}, {
+  rules: {
+    'unicorn/no-abusive-eslint-disable': 'off',
+  },
 })

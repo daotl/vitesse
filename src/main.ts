@@ -22,10 +22,10 @@ export const createApp = ViteSSG(
   },
   (ctx) => {
     // install all modules under `modules/`
-    Object.values(
+    for (const i of Object.values(
       import.meta.glob<{ install: UserModule }>('./modules/*.ts', {
         eager: true,
       }),
-    ).forEach(i => i.install?.(ctx))
+    )) { i.install?.(ctx) }
   },
 )
