@@ -1,5 +1,4 @@
 import path from 'node:path'
-
 import VueI18n from '@intlify/unplugin-vue-i18n/vite'
 import Shiki from '@shikijs/markdown-it'
 import Vue from '@vitejs/plugin-vue'
@@ -17,8 +16,8 @@ import { VitePWA } from 'vite-plugin-pwa'
 import VueDevTools from 'vite-plugin-vue-devtools'
 import Inspector from 'vite-plugin-vue-inspector'
 import Layouts from 'vite-plugin-vue-layouts'
-import WebfontDownload from 'vite-plugin-webfont-dl'
 import generateSitemap from 'vite-ssg-sitemap'
+import 'vitest/config'
 
 export default defineConfig({
   resolve: {
@@ -151,9 +150,6 @@ export default defineConfig({
       toggleComboKey: 'control-alt-i',
     }),
 
-    // https://github.com/feat-agency/vite-plugin-webfont-dl
-    WebfontDownload(),
-
     // https://github.com/webfansplz/vite-plugin-vue-devtools
     VueDevTools(),
   ],
@@ -171,7 +167,7 @@ export default defineConfig({
   ssgOptions: {
     script: 'async',
     formatting: 'minify',
-    crittersOptions: {
+    beastiesOptions: {
       reduceInlineStyles: false,
     },
     onFinished() {
