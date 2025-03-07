@@ -2,6 +2,7 @@
   "name": "vitesse",
   "$schema": "./node_modules/nx/schemas/project-schema.json",
   "sourceRoot": ".",
+  "tags": [],
   "targets": {
     "test": {
       "options": {
@@ -11,6 +12,5 @@
     "lint": {},
     "eslint": {},
     "stylelint": {}
-  },
-  "tags": []
+  }
 }
