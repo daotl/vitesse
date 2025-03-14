@@ -1,4 +1,5 @@
-import config from '@daotl/eslint-config'
+// @ts-check
+import { config } from '@daotl/eslint-config'
 
 export default config({
   unocss: true,
@@ -10,5 +11,9 @@ export default config({
       project: ['tsconfig.eslint.json'],
       extraFileExtensions: ['.vue'],
     },
+  },
+}, {
+  rules: {
+    'unicorn/no-abusive-eslint-disable': 'off',
   },
 })

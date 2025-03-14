@@ -10,3 +10,5 @@ node_modules
 *.log
 .eslintcache
 cypress/downloads
+public/assets/fonts
+.github
