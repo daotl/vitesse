@@ -1,6 +1,7 @@
 import path from 'node:path'
 import VueI18n from '@intlify/unplugin-vue-i18n/vite'
 import Shiki from '@shikijs/markdown-it'
+import { unheadVueComposablesImports } from '@unhead/vue'
 import Vue from '@vitejs/plugin-vue'
 import LinkAttributes from 'markdown-it-link-attributes'
 import Unocss from 'unocss/vite'
@@ -22,7 +23,7 @@ import 'vitest/config'
 export default defineConfig({
   resolve: {
     alias: {
-      '~/': `${path.resolve(__dirname, 'src')}/`,
+      '~/': `${path.resolve(import.meta.dirname, 'src')}/`,
     },
     // Fix issue when component libraries in the workspace are using different versions of deps like Vue
     // See: https://github.com/vuejs/core/issues/4344#issuecomment-1023220225
@@ -50,11 +51,12 @@ export default defineConfig({
 
     // https://github.com/antfu/unplugin-auto-import
     AutoImport({
+      include: [/\.[jt]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
       imports: [
         'vue',
         'vue-i18n',
-        '@vueuse/head',
         '@vueuse/core',
+        unheadVueComposablesImports,
         VueRouterAutoImports,
         {
           // add any other imports you were relying on
@@ -132,11 +134,12 @@ export default defineConfig({
     }),
 
     // https://github.com/intlify/bundle-tools/tree/main/packages/unplugin-vue-i18n
+    // eslint-disable-next-line ts/no-unsafe-call
     VueI18n({
       runtimeOnly: true,
       compositionOnly: true,
       fullInstall: true,
-      include: [path.resolve(__dirname, 'locales/**')],
+      include: [path.resolve(import.meta.dirname, 'locales/**')],
     }),
 
     // https://github.com/antfu/vite-plugin-inspect
