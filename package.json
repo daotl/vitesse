@@ -13,7 +13,6 @@
     "@unhead/vue": "catalog:frontend",
     "@unocss/reset": "catalog:frontend",
     "@vueuse/core": "catalog:frontend",
-    "element-plus": "catalog:frontend",
     "nprogress": "catalog:frontend",
     "pinia": "catalog:frontend",
     "vue": "catalog:frontend",
