@@ -90,7 +90,7 @@
   - [`unplugin-vue-i18n`](https://github.com/intlify/bundle-tools/tree/main/packages/unplugin-vue-i18n) - Vue I18n 的 Vite 插件
 - [VueUse](https://github.com/antfu/vueuse) - 实用的 Composition API 工具合集
 - [`vite-ssg-sitemap`](https://github.com/jbaubree/vite-ssg-sitemap) - 站点地图生成器
-- [`@vueuse/head`](https://github.com/vueuse/head) - 响应式地操作文档头信息
+- [`@unhead/vue v2`](https://github.com/unjs/unhead) - 响应式地操作文档头信息
 - [`vite-plugin-vue-devtools`](https://github.com/webfansplz/vite-plugin-vue-devtools) - 旨在增强Vue开发者体验的Vite插件
 
 ### 编码风格
