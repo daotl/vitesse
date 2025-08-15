@@ -31,6 +31,13 @@ export default defineConfig({
   },
 
   plugins: [
+    // https://github.com/posva/unplugin-vue-router
+    VueRouter({
+      extensions: ['.vue', '.md'],
+      exclude: ['**/components/*'],
+      dts: 'src/types/typed-router.d.ts',
+    }),
+
     VueMacros({
       plugins: {
         vue: Vue({
@@ -39,12 +46,6 @@ export default defineConfig({
       },
     }),
 
-    // https://github.com/posva/unplugin-vue-router
-    VueRouter({
-      extensions: ['.vue', '.md'],
-      exclude: ['**/components/*'],
-      dts: 'src/types/typed-router.d.ts',
-    }),
 
     // https://github.com/JohnCampionJr/vite-plugin-vue-layouts
     Layouts(),
