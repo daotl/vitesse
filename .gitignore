@@ -11,4 +11,5 @@ node_modules
 .eslintcache
 cypress/downloads
 public/assets/fonts
-.github
+.cursor/rules/nx-rules.mdc
+.github/instructions/nx.instructions.md

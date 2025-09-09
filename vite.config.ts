@@ -1,6 +1,7 @@
 import path from 'node:path'
 import VueI18n from '@intlify/unplugin-vue-i18n/vite'
 import Shiki from '@shikijs/markdown-it'
+import { unheadVueComposablesImports } from '@unhead/vue'
 import Vue from '@vitejs/plugin-vue'
 import LinkAttributes from 'markdown-it-link-attributes'
 import Unocss from 'unocss/vite'
@@ -32,6 +33,13 @@ export default defineConfig({
   },
 
   plugins: [
+    // https://github.com/posva/unplugin-vue-router
+    VueRouter({
+      extensions: ['.vue', '.md'],
+      exclude: ['**/components/*'],
+      dts: 'src/types/typed-router.d.ts',
+    }),
+
     VueMacros({
       plugins: {
         vue: Vue({
@@ -40,23 +48,17 @@ export default defineConfig({
       },
     }),
 
-    // https://github.com/posva/unplugin-vue-router
-    VueRouter({
-      extensions: ['.vue', '.md'],
-      exclude: ['**/components/*'],
-      dts: 'src/types/typed-router.d.ts',
-    }),
-
     // https://github.com/JohnCampionJr/vite-plugin-vue-layouts
     Layouts(),
 
     // https://github.com/antfu/unplugin-auto-import
     AutoImport({
+      include: [/\.[jt]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
       imports: [
         'vue',
         'vue-i18n',
-        '@vueuse/head',
         '@vueuse/core',
+        unheadVueComposablesImports,
         VueRouterAutoImports,
         {
           // add any other imports you were relying on
@@ -145,7 +147,7 @@ export default defineConfig({
     }),
 
     // https://github.com/intlify/bundle-tools/tree/main/packages/unplugin-vue-i18n
-    // eslint-disable-next-line ts/no-unsafe-call
+
     VueI18n({
       runtimeOnly: true,
       compositionOnly: true,
