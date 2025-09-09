@@ -72,7 +72,6 @@ catalogs:
     '@unhead/vue': ^2.0.14
     '@unocss/reset': ^66.4.2
     '@vueuse/core': ^13.6.0
-    beasties: ^0.3.5
     element-plus: ^2.9.6
     nprogress: ^0.2.0
     pinia: ^3.0.3
