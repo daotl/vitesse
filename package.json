@@ -2,7 +2,7 @@
   "name": "vitesse",
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@10.14.0",
+  "packageManager": "pnpm@10.28.2",
   "scripts": {
     "build:ssg": "nx exec -- vite-ssg build",
     "test:e2e": "cypress open",
